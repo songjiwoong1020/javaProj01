@@ -1,15 +1,18 @@
+import java.io.IOException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-import ver06.MenuItem;
-import ver06.MenuSelectException;
-import ver06.PhoneBookManager;
+import ver08.MenuItem;
+import ver08.MenuSelectException;
+import ver08.PhoneBookManager;
 
-public class PhoneBookVer06 implements MenuItem{
+public class PhoneBookVer08 implements MenuItem{
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		
 		PhoneBookManager pm = new PhoneBookManager();
+		
+		pm.load();
 		
 		while(true) {
 			Scanner scanner = new Scanner(System.in);
@@ -30,6 +33,7 @@ public class PhoneBookVer06 implements MenuItem{
 				} else if(user == end) {
 					System.out.println("프로그램을 종료합니다.");
 					scanner.close();
+					pm.save();
 					break;
 				}
 			}

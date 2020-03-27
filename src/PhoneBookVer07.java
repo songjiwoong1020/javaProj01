@@ -1,11 +1,11 @@
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-import ver06.MenuItem;
-import ver06.MenuSelectException;
-import ver06.PhoneBookManager;
+import ver07.MenuItem;
+import ver07.MenuSelectException;
+import ver07.PhoneBookManager;
 
-public class PhoneBookVer06 implements MenuItem{
+public class PhoneBookVer07 implements MenuItem{
 
 	public static void main(String[] args) {
 		

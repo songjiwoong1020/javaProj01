@@ -14,14 +14,6 @@ public class PhoneInfo {
 		this.birthday = birthday;
 	}
 	
-	public PhoneInfo(String name, String phoneNumber) {
-		
-		this.name = name;
-		this.phoneNumber = phoneNumber;
-		this.birthday = null;
-	}
-	
-	
 	public void showPhoneInfo() {
 		
 		System.out.println("이름 : " + name);
