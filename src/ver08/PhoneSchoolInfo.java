@@ -12,8 +12,11 @@ public class PhoneSchoolInfo extends PhoneInfo{
 	
 	@Override
 	public void showPhoneInfo() {
-		super.showPhoneInfo();
+		System.out.println("\n====동창으로 저장된 친구====");
+		System.out.println("이름 : " + name);
+		System.out.println("전화번호 : " + phoneNumber);
 		System.out.println("전공 : " + major);
 		System.out.println("학년 : " + grade);
+		System.out.println();
 	}
 }

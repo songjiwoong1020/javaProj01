@@ -10,8 +10,11 @@ public class PhoneCompanyInfo extends PhoneInfo {
 	
 	@Override
 	public void showPhoneInfo() {
-		super.showPhoneInfo();
+		System.out.println("\n====회사동료로 저장된 친구====");
+		System.out.println("이름 : " + name);
+		System.out.println("전화번호 : " + phoneNumber);
 		System.out.println("회사 : " + company);
+		System.out.println();
 	}
 
 

@@ -12,14 +12,14 @@ public class PhoneBookVer08 implements MenuItem{
 		
 		PhoneBookManager pm = new PhoneBookManager();
 		
-		pm.load();
+		pm.load();//생성자와 같은역할일듯
 		
 		while(true) {
 			Scanner scanner = new Scanner(System.in);
 			
 			try {
 				pm.printMenu();
-				int user = pm.userNum(scanner.nextInt());
+				int user = pm.userNum(scanner.nextInt());//사용자 정의 에러를 사용하기위해서 약간 이상하게 만든듯
 				scanner.nextLine();
 				
 				if(user == dataInput) {
@@ -38,10 +38,12 @@ public class PhoneBookVer08 implements MenuItem{
 				}
 			}
 			catch(MenuSelectException e) {
+//				System.out.println("\n=====사용자 정의 예외 실행됨=====\n");//마지막에 주석처리
 				System.out.println(e.getMessage());
 			}
 			catch(InputMismatchException e) {
-				System.out.println("잘못 입력했습니다.");
+				System.out.println("잘못 입력했습니다.\n");
+//				System.out.println("\n=====메뉴 선택 부분에서 InputMismatchException 발생=====\n");//마지막에 주석처리
 			}
 
 		}
