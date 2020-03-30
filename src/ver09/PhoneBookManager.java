@@ -2,13 +2,18 @@ package ver09;
 
 import java.util.Scanner;
 
+/**
+null값 저장됨, 무결성제약조건 생김
+ */
 public class PhoneBookManager extends ConnectImpl{
 	
 	Scanner scanner = new Scanner(System.in);
 	
-	public PhoneBookManager() {
-		super("kosmo", "1234");
+	public PhoneBookManager(String id, String pass) {
+		super(id, pass);
 	}
+	
+	
 	
 	//메뉴출력
 	public void printMenu(){
@@ -23,8 +28,37 @@ public class PhoneBookManager extends ConnectImpl{
 		
 	}
 	
+	public void test() {
+		
+//		System.out.println("test진입");//테이블이 없으면 만들어주고 싶었는데 한계를 느꼈습니다ㅎㅎ
+		try {
+			String query = "select count(*) from all_tables where table_name = upper('phonebook_tb')";
+			
+			stmt = con.createStatement();
+			
+			rs = stmt.executeQuery(query);
+			rs.next();
+			
+			int a = rs.getInt("count(*)");
+			
+			if(a == 0) {
+				System.out.println("table_name 테이블이 없어서 종료합니다ㅠ.ㅠ");
+				System.exit(0);
+			} else if (a == 1) {
+				System.out.println("테이블 존재");
+			} else {
+				System.out.println("나도 모르겟다.");
+			}
+			
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
 	@Override
-	public void dataInput() {
+	public void dataInput() {//무결성 제약조건
 		
 		try {
 		String query = "INSERT INTO phonebook_tb VALUES (?, ?, ?)";
@@ -42,9 +76,9 @@ public class PhoneBookManager extends ConnectImpl{
 		psmt.setString(1, name);
 		psmt.setString(2, phone);
 		psmt.setString(3, birth);
-		
 		System.out.println(psmt.executeUpdate() + "행이 입력되었습니다.");
 		}
+		
 		catch(Exception e) {
 			e.printStackTrace();
 		}
@@ -62,6 +96,7 @@ public class PhoneBookManager extends ConnectImpl{
 				
 			rs = stmt.executeQuery(query);
 			
+			System.out.println("-이름-    -전화번호-   -생년월일-");
 			while(rs.next()) {
 				String name = rs.getString("name");
 				String phoneNumber = rs.getString("phoneNumber");

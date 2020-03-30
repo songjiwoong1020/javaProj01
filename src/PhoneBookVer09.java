@@ -7,10 +7,17 @@ public class PhoneBookVer09 {
 
 	public static void main(String[] args) {
 		
-		PhoneBookManager pm = new PhoneBookManager();
+		Scanner scanner = new Scanner(System.in);
+		System.out.print("id : ");
+		String id = scanner.nextLine();
+		System.out.print("pass : ");
+		String pass = scanner.nextLine();
+
+		PhoneBookManager pm = new PhoneBookManager(id, pass);
+		
+		pm.test();
 		
 		while(true) {
-			Scanner scanner = new Scanner(System.in);
 			
 			try {
 				pm.printMenu();
@@ -27,6 +34,7 @@ public class PhoneBookVer09 {
 					pm.dataAllShow();
 				} else if(user == 5) {
 					System.out.println("프로그램을 종료합니다.");
+					pm.close();
 					scanner.close();
 					break;
 				} else {
@@ -35,7 +43,9 @@ public class PhoneBookVer09 {
 			}
 			catch(InputMismatchException e) {
 				System.out.println("잘못 입력했습니다.");
+				scanner = new Scanner(System.in);
 			}
 		}
+			
 	}
 }
