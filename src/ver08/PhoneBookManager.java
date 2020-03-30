@@ -96,6 +96,10 @@ public class PhoneBookManager implements SubMenuItem{
 		
 	}
 	
+	public void subDataInput() {
+		
+	}
+	
 	//입력
 	public void dataInput() {
 		
@@ -197,38 +201,48 @@ public class PhoneBookManager implements SubMenuItem{
 	//검색
 	public void dataSearch() {
 		
-		System.out.println("\n=데이터 검색을 시작합니다.=\n");
-		System.out.print("이름 : ");
-		String search = scanner.nextLine();
-		boolean a = false;
-
-		for(PhoneInfo list : phoneInfo) {
-			if(list.name.equals(search)) {
-				list.showPhoneInfo();
-				System.out.println("\n데이터 검색이 완료되었습니다.\n");
-				a = true;
+		try {
+			System.out.println("\n=데이터 검색을 시작합니다.=\n");
+			System.out.print("이름 : ");
+			String search = scanner.nextLine();
+			boolean a = false;
+	
+			for(PhoneInfo list : phoneInfo) {
+				if(list.name.equals(search)) {
+					list.showPhoneInfo();
+					System.out.println("\n데이터 검색이 완료되었습니다.\n");
+					a = true;
+				}
 			}
+			if(!a) System.out.println("\n입력하신 정보와 일치하는 정보가 없습니다.\n");
 		}
-		if(!a) System.out.println("\n입력하신 정보와 일치하는 정보가 없습니다.\n");
+		catch(NullPointerException e) {
+			System.out.println("\n널포인트\n");
+		}
 	}
 	
 	//삭제
 	public void dataDelete() {
 		
-		System.out.println("\n=데이터 삭제를 시작합니다.=\n");
-		System.out.print("이름 : ");
-		String delete = scanner.nextLine();
-		boolean a = false;
-		
-		for(PhoneInfo list : phoneInfo) {
-			if(list.name.equals(delete)) {
-				phoneInfo.remove(list);
-				a = true;
-				System.out.println("\n데이터 삭제가 완료되었습니다.\n");
-				break;
+		try {
+			System.out.println("\n=데이터 삭제를 시작합니다.=\n");
+			System.out.print("이름 : ");
+			String delete = scanner.nextLine();
+			boolean a = false;
+			
+			for(PhoneInfo list : phoneInfo) {
+				if(list.name.equals(delete)) {
+					phoneInfo.remove(list);
+					a = true;
+					System.out.println("\n데이터 삭제가 완료되었습니다.\n");
+					break;
+				}
 			}
+			if(!a) System.out.println("\n입력하신 정보와 일치하는 정보가 없습니다.\n");
 		}
-		if(!a) System.out.println("\n입력하신 정보와 일치하는 정보가 없습니다.\n");
+		catch(NullPointerException e) {
+			System.out.println("\n널포인트\n");
+		}
 	}
 
 	
