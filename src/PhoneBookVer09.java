@@ -46,6 +46,5 @@ public class PhoneBookVer09 {
 				scanner = new Scanner(System.in);
 			}
 		}
-			
 	}
 }

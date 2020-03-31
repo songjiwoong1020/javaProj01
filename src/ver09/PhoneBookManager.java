@@ -42,7 +42,7 @@ public class PhoneBookManager extends ConnectImpl{
 			int a = rs.getInt("count(*)");
 			
 			if(a == 0) {
-				System.out.println("table_name 테이블이 없어서 종료합니다ㅠ.ㅠ");
+				System.out.println("phonebook_tb 테이블이 없어서 종료합니다ㅠ.ㅠ");
 				System.exit(0);
 			} else if (a == 1) {
 				System.out.println("테이블 존재");
@@ -152,6 +152,5 @@ public class PhoneBookManager extends ConnectImpl{
 		catch(Exception e) {
 			e.printStackTrace();
 		}
-		
 	}
 }
