@@ -92,20 +92,24 @@ public class PhoneBookManager extends ConnectImpl{
 			
 			stmt = con.createStatement();
 			
-			String query = "SELECT name, phoneNumber, birthday FROM phonebook_tb where name = " + search;
+			String query = "SELECT name, phoneNumber, birthday FROM phonebook_tb where name = '" + search + "'";
 				
 			rs = stmt.executeQuery(query);
 			
-			System.out.println("-이름-    -전화번호-   -생년월일-");
-			while(rs.next()) {
-				String name = rs.getString("name");
-				String phoneNumber = rs.getString("phoneNumber");
-				String birthday = rs.getString("birthday");
-				System.out.printf("%-5s %-10s %-10s\n", name, phoneNumber, birthday);
+			if(!rs.next()) {
+				System.out.println("검색 결과가 없습니다.");
+			} else {
+				System.out.println("-이름-    -전화번호-   -생년월일-");
+				while(rs.next()) {
+					String name = rs.getString("name");
+					String phoneNumber = rs.getString("phoneNumber");
+					String birthday = rs.getString("birthday");
+					System.out.printf("%-5s %-10s %-10s\n", name, phoneNumber, birthday);
+				}
 			}
-			
 		}
 		catch(Exception e) {
+			System.out.println(e.getMessage());
 			e.printStackTrace();
 		}
 
