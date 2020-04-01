@@ -3,7 +3,7 @@ package ver09;
 import java.util.Scanner;
 
 /**
-null값 저장됨, 무결성제약조건 생김
+두번째 프로젝트에서 조금 더 보완하였습니다. 첫번째 프로젝트는 시간관계상 미완성인체로 두겠습니다,,,
  */
 public class PhoneBookManager extends ConnectImpl{
 	
